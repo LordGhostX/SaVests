@@ -15,7 +15,7 @@ def index(request):
         "within_past_month": len(Users.objects.filter(date__gt=datetime.now() - timedelta(days=30))),
         "total_users": len(Users.objects.all()),
         "active_users": len(Users.objects.filter(active=1)),
-        "inactive_users": len(Users.objects.filter(active=0))
+        "inactive_users": len(Users.objects.filter(active=-1))
     }
     return render(request, "index.html", data)
 
