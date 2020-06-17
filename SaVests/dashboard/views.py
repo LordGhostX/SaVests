@@ -33,3 +33,9 @@ def update_user_status(request, user_id):
     user.active *= -1
     user.save()
     return redirect(list_users)
+
+@staff_member_required
+def delete_user(request, user_id):
+    user = Users.objects.get(pk=user_id)
+    user.delete()
+    return redirect(list_users)
