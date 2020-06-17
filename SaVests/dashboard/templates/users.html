@@ -31,6 +31,9 @@
                   Full Name
                 </th>
                 <th>
+                  Email
+                </th>
+                <th>
                   Date Joined
                 </th>
                 <th>
@@ -49,6 +52,9 @@
               <tr>
                 <td>
                   {{ i.name }}
+                </td>
+                <td>
+                  {{ i.email }}
                 </td>
                 <td>
                   {{ i.date }}
@@ -92,8 +98,9 @@
 <div class="clearfix">
 <script>
   function add_user() {
-    let name = prompt("Enter the Full Name of the user: ");
-    window.location = "{% url 'list_users' %}?name=" + name;
+    let name = prompt("Enter the full name of the user: ");
+    let email = prompt("Enter the email address of the user: ");
+    window.location = "{% url 'list_users' %}?name=" + name + "&email=" + email;
   }
 </script>
 {% endblock %}

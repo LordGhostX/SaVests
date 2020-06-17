@@ -16,7 +16,14 @@
           </p>
         </div>
         <form method="POST" class="panel-body">
+          {% if num_successful >= 0 %}
+          <p class="text-success">
+            Successfully sent {{ num_successful }} emails!
+          </p>
+          {% endif %}
           {% csrf_token %}
+          <input class="form-control" placeholder="Email Sender" type="email" name="sender" />
+          <br />
           <input class="form-control" placeholder="Email Subject" type="text" name="subject" />
           <br />
           <textarea class="form-control" placeholder="Email Content" rows="10" name="content"></textarea>

@@ -4,6 +4,7 @@ import csv
 from django.shortcuts import render, redirect
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpResponse
+from django.core.mail import send_mass_mail
 from .models import *
 
 # Create your views here.
@@ -23,8 +24,9 @@ def index(request):
 @staff_member_required
 def list_users(request):
     name = request.GET.get("name")
-    if name:
-        user = Users(name=name)
+    email = request.GET.get("email")
+    if name and email:
+        user = Users(name=name, email=email)
         user.save()
         return redirect(list_users)
     data = {
@@ -55,22 +57,28 @@ def download_users(request):
     response['Content-Disposition'] = 'attachment; filename="user-data-{}.csv"'.format(int(datetime.now().timestamp()))
 
     writer = csv.writer(response)
-    writer.writerow(['Full Name', 'Active', 'Date'])
+    writer.writerow(['Full Name', 'Email', 'Active', 'Date'])
     for i in Users.objects.all():
         active = "Active" if i.active ==  1 else "Inactive"
-        writer.writerow([i.name, active, i.date])
+        writer.writerow([i.name, i.email, active, i.date])
 
     return response
 
 
 @staff_member_required
 def send_email(request):
+    num_successful = -1
     if request.method == "POST":
         subject = request.POST.get("subject")
         content = request.POST.get("content")
+        sender = request.POST.get("sender")
         if subject and content:
-            pass
+            messages = []
+            for i in Users.objects.all():
+                messages.append((subject, content, sender, [i.email]))
+            num_successful = send_mass_mail(tuple(messages), fail_silently=False)
     data = {
-        "total_users": len(Users.objects.all())
+        "total_users": len(Users.objects.all()),
+        "num_successful": num_successful
     }
     return render(request, "email.html", data)
