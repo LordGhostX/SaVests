@@ -39,7 +39,7 @@
      <nav>
       <ul class="nav">
        <li>
-        <a href="#">
+        <a href="{% url 'index' %}">
          <i class="fa fa-home">
          </i>
          <span>
@@ -87,7 +87,7 @@
          <div class="panel panel-headline">
           <div class="panel-heading">
            <h3 class="panel-title">
-            100
+            {{ within_24_hours }}
            </h3>
            <p class="panel-subtitle">
             New users within 24 hours
@@ -99,7 +99,7 @@
          <div class="panel panel-headline">
           <div class="panel-heading">
            <h3 class="panel-title">
-            100
+            {{ within_past_week }}
            </h3>
            <p class="panel-subtitle">
             New users within the week
@@ -111,7 +111,7 @@
          <div class="panel panel-headline">
           <div class="panel-heading">
            <h3 class="panel-title">
-            100
+            {{ within_past_month }}
            </h3>
            <p class="panel-subtitle">
             New users within the month
@@ -123,7 +123,7 @@
          <div class="panel panel-headline">
           <div class="panel-heading">
            <h3 class="panel-title">
-            100
+            {{ total_users }}
            </h3>
            <p class="panel-subtitle">
             Total users on the platform
@@ -135,7 +135,7 @@
          <div class="panel panel-headline">
           <div class="panel-heading">
            <h3 class="panel-title">
-            100
+            {{ active_users }}
            </h3>
            <p class="panel-subtitle">
             Total active users on the platform
@@ -147,7 +147,7 @@
          <div class="panel panel-headline">
           <div class="panel-heading">
            <h3 class="panel-title">
-            100
+            {{ inactive_users }}
            </h3>
            <p class="panel-subtitle">
             Total inactive users on the platform
