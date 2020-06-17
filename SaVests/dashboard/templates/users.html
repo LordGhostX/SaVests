@@ -58,18 +58,18 @@
                   active
                 </td>
                 <td>
-                  <button class="btn btn-danger" type="button">
+                  <a href="{% url 'update_user_status' i.id %}"><button class="btn btn-danger" type="button">
                     Set Inactive
-                  </button>
+                  </button></a>
                 </td>
                 {% else %}
                 <td>
                   inactive
                 </td>
                 <td>
-                  <button class="btn btn-success" type="button">
+                  <a href="{% url 'update_user_status' i.id %}"><button class="btn btn-success" type="button">
                     Set Active
-                  </button>
+                  </button></a>
                 </td>
                 {% endif %}
                 <td>

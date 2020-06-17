@@ -1,6 +1,6 @@
 from datetime import timedelta
 from datetime import datetime
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import F
 from .models import *
@@ -26,3 +26,10 @@ def list_users(request):
     }
     data["users_length"] = len(data["users"])
     return render(request, "users.html", data)
+
+@staff_member_required
+def update_user_status(request, user_id):
+    user = Users.objects.get(pk=user_id)
+    user.active *= -1
+    user.save()
+    return redirect(list_users)
