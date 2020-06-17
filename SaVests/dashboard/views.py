@@ -22,8 +22,13 @@ def index(request):
 
 @staff_member_required
 def list_users(request):
+    name = request.GET.get("name")
+    if name:
+        user = Users(name=name)
+        user.save()
+        return redirect(list_users)
     data = {
-        "users": Users.objects.all()
+        "users": Users.objects.order_by("-date")
     }
     data["users_length"] = len(data["users"])
     return render(request, "users.html", data)
