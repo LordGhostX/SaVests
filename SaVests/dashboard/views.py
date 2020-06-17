@@ -1,8 +1,9 @@
 from datetime import timedelta
 from datetime import datetime
+import csv
 from django.shortcuts import render, redirect
 from django.contrib.admin.views.decorators import staff_member_required
-from django.db.models import F
+from django.http import HttpResponse
 from .models import *
 
 # Create your views here.
@@ -27,6 +28,7 @@ def list_users(request):
     data["users_length"] = len(data["users"])
     return render(request, "users.html", data)
 
+
 @staff_member_required
 def update_user_status(request, user_id):
     user = Users.objects.get(pk=user_id)
@@ -34,8 +36,23 @@ def update_user_status(request, user_id):
     user.save()
     return redirect(list_users)
 
+
 @staff_member_required
 def delete_user(request, user_id):
     user = Users.objects.get(pk=user_id)
     user.delete()
     return redirect(list_users)
+
+
+@staff_member_required
+def download_users(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="user-data-{}.csv"'.format(int(datetime.now().timestamp()))
+
+    writer = csv.writer(response)
+    writer.writerow(['Full Name', 'Active', 'Date'])
+    for i in Users.objects.all():
+        active = "Active" if i.active ==  1 else "Inactive"
+        writer.writerow([i.name, active, i.date])
+
+    return response
