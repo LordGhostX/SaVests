@@ -21,7 +21,9 @@
 				<div class="navbar-btn">
 					<button type="button" class="btn-toggle-fullwidth"><i class="fa fa-list"></i></button>
 				</div>
-				<div class="navbar-left"><h3>SaVests Admin Dashboard</h3></div>
+				<div class="navbar-left">
+					<h3>SaVests Admin Dashboard</h3>
+				</div>
 			</div>
 		</nav>
 		<!-- LEFT SIDEBAR -->
@@ -44,58 +46,62 @@
 				<div class="container-fluid">
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">
-						<div class="panel-heading">
-							<h3 class="panel-title">Users Overview</h3>
+						<div class="panel-heading users-list">
+							<h3 class="panel-title">Users List</h3>
 						</div>
 						<div class="panel-body">
-							<div class="col-md-4">
-								<div class="panel panel-headline">
-									<div class="panel-heading">
-										<h3 class="panel-title">100</h3>
-										<p class="panel-subtitle">New users within 24 hours</p>
-									</div>
-								</div>
+							<div class="users-list-actions">
+								<button type="button" class="btn btn-success">Add User</button>
+								<button type="button" class="btn btn-warning">Download Users CSV</button>
 							</div>
-							<div class="col-md-4">
-								<div class="panel panel-headline">
-									<div class="panel-heading">
-										<h3 class="panel-title">100</h3>
-										<p class="panel-subtitle">New users within the week</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="panel panel-headline">
-									<div class="panel-heading">
-										<h3 class="panel-title">100</h3>
-										<p class="panel-subtitle">New users within the month</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="panel panel-headline">
-									<div class="panel-heading">
-										<h3 class="panel-title">100</h3>
-										<p class="panel-subtitle">Total users on the platform</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="panel panel-headline">
-									<div class="panel-heading">
-										<h3 class="panel-title">100</h3>
-										<p class="panel-subtitle">Total active users on the platform</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="panel panel-headline">
-									<div class="panel-heading">
-										<h3 class="panel-title">100</h3>
-										<p class="panel-subtitle">Total inactive users on the platform</p>
-									</div>
-								</div>
-							</div>
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th>Full Name</th>
+										<th>Date Joined</th>
+										<th>Status</th>
+										<th>Change Status</th>
+										<th>Edit</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>John Doe</td>
+										<td>17/06/2020 8:00</td>
+										<td>active</td>
+										<td><button type="button" class="btn btn-danger">Set Inactive</button></td>
+										<td><button type="button" class="btn btn-warning">Edit</button></td>
+									</tr>
+									<tr>
+										<td>John Doe</td>
+										<td>16/06/2020 8:00</td>
+										<td>active</td>
+										<td><button type="button" class="btn btn-danger">Set Inactive</button></td>
+										<td><button type="button" class="btn btn-warning">Edit</button></td>
+									</tr>
+									<tr>
+										<td>John Doe</td>
+										<td>16/06/2020 6:00</td>
+										<td>active</td>
+										<td><button type="button" class="btn btn-danger">Set Inactive</button></td>
+										<td><button type="button" class="btn btn-warning">Edit</button></td>
+									</tr>
+									<tr>
+										<td>John Doe</td>
+										<td>15/06/2020 8:00</td>
+										<td>inactive</td>
+										<td><button type="button" class="btn btn-success">Set Active</button></td>
+										<td><button type="button" class="btn btn-warning">Edit</button></td>
+									</tr>
+									<tr>
+										<td>John Doe</td>
+										<td>14/06/2020 8:00</td>
+										<td>inactive</td>
+										<td><button type="button" class="btn btn-success">Set Active</button></td>
+										<td><button type="button" class="btn btn-warning">Edit</button></td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 					<!-- END OVERVIEW -->

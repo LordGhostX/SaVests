@@ -298,6 +298,14 @@ html.fullscreen-bg #wrapper {
   margin-left: 20px;
 }
 
+.users-list {
+  padding-bottom: 0px !important;
+}
+
+.users-list-actions {
+  margin-bottom: 15px;
+}
+
 .notification-item .dot {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
