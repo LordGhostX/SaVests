@@ -61,3 +61,16 @@ def download_users(request):
         writer.writerow([i.name, active, i.date])
 
     return response
+
+
+@staff_member_required
+def send_email(request):
+    if request.method == "POST":
+        subject = request.POST.get("subject")
+        content = request.POST.get("content")
+        if subject and content:
+            pass
+    data = {
+        "total_users": len(Users.objects.all())
+    }
+    return render(request, "email.html", data)

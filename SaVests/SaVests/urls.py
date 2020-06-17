@@ -21,5 +21,6 @@ urlpatterns = [
     path('', RedirectView.as_view(url='lite/')),
     path('admin/', RedirectView.as_view(url='../lite/')),
     path('admin/', admin.site.urls),
+    path('lite/logout/', RedirectView.as_view(url='../../admin/logout/'), name="logout"),
     path('lite/', include('dashboard.urls'))
 ]
