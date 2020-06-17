@@ -17,3 +17,12 @@ def index(request):
         "inactive_users": len(Users.objects.filter(active=0))
     }
     return render(request, "index.html", data)
+
+
+@staff_member_required
+def list_users(request):
+    data = {
+        "users": Users.objects.all()
+    }
+    data["users_length"] = len(data["users"])
+    return render(request, "users.html", data)
